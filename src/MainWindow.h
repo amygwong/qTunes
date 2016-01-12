@@ -1,3 +1,12 @@
+// ======================================================================
+// IMPROC: Image Processing Software Package
+// Copyright (C) 2015 by George Wolberg
+//
+// MainWindow.h - Main Window widget class
+//
+// Written by: George Wolberg, 2015
+// ======================================================================
+
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
@@ -9,6 +18,18 @@
 #include "openPrompt.h"
 
 class glVisualizer;
+
+///////////////////////////////////////////////////////////////////////////////
+///
+/// \class MainWindow
+/// \brief IMPROC main window.
+///
+/// The IMPROC main window consists of three main areas: a tree view
+/// in the top-left corner, an information view directly below the
+/// tree view, and a frame array that takes up the entire right side
+/// of the screen.
+///
+///////////////////////////////////////////////////////////////////////////////
 
 class MainWindow : public QMainWindow {
     Q_OBJECT

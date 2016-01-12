@@ -9,11 +9,9 @@ QT += opengl
 CONFIG += console
 TEMPLATE = app
 TARGET = v2
-
-INCLUDEPATH += C:\Users\Amy\Downloads\taglib-1.9.1\taglib
-LIBS += -LC:\Users\Amy\Downloads\taglib-1.9.1\Build\taglib\Release
+INCLUDEPATH += -I /opt/local/include/taglib
+LIBS += -L/opt/local/lib
 LIBS += -ltag
-
 # Input
 HEADERS += MainWindow.h glWidget.h glvisualizer.h openPrompt.h
 SOURCES += main.cpp MainWindow.cpp glWidget.cpp glvisualizer.cpp openPrompt.cpp

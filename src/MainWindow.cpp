@@ -1,3 +1,12 @@
+// ======================================================================
+// IMPROC: Image Processing Software Package
+// Copyright (C) 2015 by George Wolberg
+//
+// MainWindow.cpp - Main Window widget
+//
+// Written by: George Wolberg, 2015
+// ======================================================================
+
 #include <QtWidgets>
 #include "MainWindow.h"
 #include "glWidget.h"
@@ -43,7 +52,7 @@ MainWindow::MainWindow	(QString program)
     initLists();		// init list widgets
 
     // set main window titlebar
-    QString copyright = "Copyright (C) 2015";
+    QString copyright = "Copyright (C) 2015 by George Wolberg";
     QString version	  = "Version 1.0";
     QString title	  =  QString("%1   (%2)         %3")
                 .arg(program).arg(version).arg(copyright);
@@ -202,8 +211,8 @@ void MainWindow::createWidgets() {
     m_previous2->setIcon(style()->standardIcon(QStyle::SP_MediaSkipBackward));
     m_muteButton->setIcon(style()->standardIcon(QStyle::SP_MediaVolume));
 
-    m_shuffle->setIcon(style()->standardIcon(QStyle::SP_DesktopIcon));
-    m_repeat->setIcon(style()->standardIcon(QStyle::SP_BrowserReload));
+    m_shuffle->setText("Shuffle");
+    m_repeat->setText("Repeat");
 
     // initialize widgets for searching through table items
     m_typeSearch = new QLineEdit();

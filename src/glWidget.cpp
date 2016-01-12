@@ -88,7 +88,7 @@ void glWidget::paintGL() {
     
     //display the album covers
     for(int i=0; i<m_albNum; i++) {
-       
+
         //translates to spot and stores location
         glTranslatef(m_dir*m_size,0,0);
         glPushMatrix();
@@ -119,7 +119,7 @@ void glWidget::paintGL() {
         else if(i>(m_albNum-1)/2) {
             glTranslatef(m_dir*2*(m_albNum-i),0,0);
             
-            //draw albums in backwards order so they 
+            //draw albums in backwards order so they
             //dont draw on top of each other
             for(int j=i; j<m_albNum; j++) {
                 glTranslatef(-m_dir*m_size,0,0);
@@ -152,18 +152,18 @@ void glWidget::square(int index, bool flip) {
     if(index<0) {
         index*=-1;
         //if(index!=0)
-            index = m_listLength-index;
+        index = m_listLength-index;
     }
     
     // creates a texture
     // else a blank square is created instead
     if(m_loaded&&index<m_listLength) {
 
-            // enables texture mapping
-            glEnable(GL_TEXTURE_2D);
+        // enables texture mapping
+        glEnable(GL_TEXTURE_2D);
 
-            // selects texture to bind
-            glBindTexture(GL_TEXTURE_2D, m_texture[index]);
+        // selects texture to bind
+        glBindTexture(GL_TEXTURE_2D, m_texture[index]);
 
 
         // draws filled album cover polygon flipped
@@ -171,10 +171,10 @@ void glWidget::square(int index, bool flip) {
             glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
             glColor3f(.8, .8, .7);
             glBegin(GL_QUADS);
-                glTexCoord2f(0, 1);	glVertex3f(1.0,1.0,0.0);
-                glTexCoord2f(1, 1);	glVertex3f(-1.0,1.0,0.0);
-                glTexCoord2f(1, 0);	glVertex3f(-1.0,-1.0,0.0);
-                glTexCoord2f(0, 0);	glVertex3f(1.0,-1.0,0.0);
+            glTexCoord2f(0, 1);	glVertex3f(1.0,1.0,0.0);
+            glTexCoord2f(1, 1);	glVertex3f(-1.0,1.0,0.0);
+            glTexCoord2f(1, 0);	glVertex3f(-1.0,-1.0,0.0);
+            glTexCoord2f(0, 0);	glVertex3f(1.0,-1.0,0.0);
             glEnd();
             glDisable(GL_TEXTURE_2D);
         }
@@ -183,11 +183,11 @@ void glWidget::square(int index, bool flip) {
         else {
             glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
             glColor3f(.8, .8, .7);
-                glBegin(GL_QUADS);
-                glTexCoord2f(1, 1);	glVertex3f(1.0,1.0,0.0);
-                glTexCoord2f(0, 1);	glVertex3f(-1.0,1.0,0.0);
-                glTexCoord2f(0, 0);	glVertex3f(-1.0,-1.0,0.0);
-                glTexCoord2f(1, 0);	glVertex3f(1.0,-1.0,0.0);
+            glBegin(GL_QUADS);
+            glTexCoord2f(1, 1);	glVertex3f(1.0,1.0,0.0);
+            glTexCoord2f(0, 1);	glVertex3f(-1.0,1.0,0.0);
+            glTexCoord2f(0, 0);	glVertex3f(-1.0,-1.0,0.0);
+            glTexCoord2f(1, 0);	glVertex3f(1.0,-1.0,0.0);
             glEnd();
             glDisable(GL_TEXTURE_2D);
         }
@@ -197,10 +197,10 @@ void glWidget::square(int index, bool flip) {
         glEnable(GL_LINE_SMOOTH);
         glColor3f(.8, 0, 0);
         glBegin(GL_QUADS);
-             glVertex3f(1.0,1.0,0.0);
-             glVertex3f(-1.0,1.0,0.0);
-             glVertex3f(-1.0,-1.0,0.0);
-             glVertex3f(1.0,-1.0,0.0);
+        glVertex3f(1.0,1.0,0.0);
+        glVertex3f(-1.0,1.0,0.0);
+        glVertex3f(-1.0,-1.0,0.0);
+        glVertex3f(1.0,-1.0,0.0);
         glEnd();
         glDisable(GL_LINE_SMOOTH);
         glFlush();
@@ -209,10 +209,10 @@ void glWidget::square(int index, bool flip) {
     //creates empty white squares for initial start up
     else {
         glBegin(GL_POLYGON);
-            glVertex3f(1.0,1.0,0.0);
-            glVertex3f(-1.0,1.0,0.0);
-            glVertex3f(-1.0,-1.0,0.0);
-            glVertex3f(1.0,-1.0,0.0);
+        glVertex3f(1.0,1.0,0.0);
+        glVertex3f(-1.0,1.0,0.0);
+        glVertex3f(-1.0,-1.0,0.0);
+        glVertex3f(1.0,-1.0,0.0);
         glEnd();
         glFlush();
     }
@@ -230,7 +230,7 @@ void glWidget::loadImages(QList<QImage> imgs) {
     glEnable(GL_TEXTURE_2D);
 
     for(int i=0; i<imgs.size(); i++) {
-//        m_imagelist << imgs[i];
+        //        m_imagelist << imgs[i];
         // storage for one texture
 
 
@@ -289,22 +289,24 @@ void glWidget::s_animate() {
 // start animation and sets conditions
 //
 void glWidget::startAnimate(bool left) {
-    //sets conditions based on direction
-    if(left) {
-        
-        //need to change m_current if the direction is different from before
-        if(m_dir==-1)
-            m_current += 2;
-        m_dir = 1;
+    if(!m_timer->isActive()) {
+        //sets conditions based on direction
+        if(left) {
+
+            //need to change m_current if the direction is different from before
+            if(m_dir==-1)
+                m_current += 2;
+            m_dir = 1;
+        }
+        else {
+
+            //need to change m_current if the direction is different from before
+            if(m_dir==1)
+                m_current -= 2;
+            m_dir = -1;
+        }
+
+        //start animation
+        m_timer->start(10);
     }
-    else {
-        
-        //need to change m_current if the direction is different from before
-        if(m_dir==1)
-           m_current -= 2;
-        m_dir = -1;
-    }
-    
-    //start animation
-    m_timer->start(10);
 }
